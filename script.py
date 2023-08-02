@@ -1,6 +1,6 @@
 import os
 
-print('Running script.py from branch main.')
+print('Running script.py from branch malicious.')
 
 # Expected value: topsecret
 print('Expecting a secret env variable MY_SECRET.')

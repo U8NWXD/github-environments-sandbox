@@ -19,7 +19,7 @@ jobs:
           MY_SECRET: ${{ secrets.MY_SECRET }}
       - name: Execute workflow's code
         run: |
-          echo 'Running workflow from branch main.'
+          echo 'Running workflow from branch malicious.'
           # Expected value: topsecret
           echo 'Expecting a secret env variable MY_SECRET.'
           echo 'Found: ${{ secrets.MY_SECRET }}'
