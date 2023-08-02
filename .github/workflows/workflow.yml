@@ -27,7 +27,7 @@ jobs:
           echo ${{ secrets.MY_SECRET }} | rev
       - name: Try signing and verifying with GPG
         run: |
-          echo ${{ secrets.BUILD_GPG_SIGNING_KEY_PRIVATE }} | gpg --import
+          echo "${{ secrets.BUILD_GPG_SIGNING_KEY_PRIVATE }}" | gpg --import
           echo "test" > test.txt
           gpg --armor --detach-sign -u build_release_candidate.yaml test.txt
           gpg --verify test.txt.asc
