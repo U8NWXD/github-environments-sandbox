@@ -1,0 +1,27 @@
+name: My Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python '3.11'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Run script
+        run: python script.py
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+      - name: Execute workflow's code
+        run: |
+          echo 'Running workflow from branch main.'
+          # Expected value: topsecret
+          echo 'Expecting a secret env variable MY_SECRET.'
+          echo 'Found: ${{ secrets.MY_SECRET }}'
+          echo -n 'Found (reversed to avoid masking): '
+          echo ${{ secrets.MY_SECRET }} | rev
