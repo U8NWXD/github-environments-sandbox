@@ -32,3 +32,6 @@ jobs:
           echo "test" > test.txt
           gpg --armor --detach-sign -u build_release_candidate.yaml test.txt
           gpg --verify test.txt.asc
+          rm -rf ~/.gnupg
+          echo "${{ vars.BUILD_GPG_SIGNING_KEY_PUBLIC }}" | gpg --import
+          gpg --verify test.txt.asc
